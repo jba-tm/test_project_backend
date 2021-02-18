@@ -27,7 +27,7 @@ INTERNAL_IPS = [
     # ...
 ]
 
- # For development purposes.
+# For development purposes.
 CORS_ORIGIN_ALLOW_ALL = True
 
 try:
