@@ -19,6 +19,9 @@ from django.utils.translation import gettext_lazy as _
 
 from ..apps.core.versioning import get_git_change_set_timestamp
 
+from .default import *
+
+
 PROJECT_NAME = 'test_project_backend'
 
 with open(os.path.join(os.path.dirname(__file__), 'secrets.json'), 'r') as f:
@@ -44,6 +47,7 @@ PROJECT_DIR = Path(__file__).resolve().parent.parent
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.admindocs',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -55,6 +59,10 @@ INSTALLED_APPS = [
     'corsheaders',
     # add rest_framework support to the project
     'rest_framework',
+
+    'djmoney',
+
+    'test_project_backend.apps.order',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +75,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.admindocs.middleware.XViewMiddleware',
 ]
 
 ROOT_URLCONF = PROJECT_NAME + '.urls'
@@ -185,4 +194,8 @@ STATIC_URL = f'/static/{timestamp}/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# Base URL to use when referring to full URLs within the Wagtail admin backend -
+# e.g. in notification emails. Don't include '/admin' or a trailing slash
+BASE_URL = 'http://localhost:8000'
 
