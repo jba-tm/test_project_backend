@@ -25,7 +25,7 @@ urlpatterns = [
     path('orders/', include('test_project_backend.apps.order.urls', namespace='order')),
 
     # DEVELOPMENT URLS - REMOVE AFTER PRODUCTION
-    path('admin/doc/', include('django.contrib.admindocs.urls')),
-    # debug toolbar url
-    path('__debug__/', include(debug_toolbar.urls)),
+    # path('admin/doc/', include('django.contrib.admindocs.urls')),
+    # # debug toolbar url
+    # path('__debug__/', include(debug_toolbar.urls)),
 ]
